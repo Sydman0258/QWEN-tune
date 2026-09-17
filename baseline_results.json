@@ -1,0 +1,125 @@
+{
+  "accuracy": 0.0,
+  "results": [
+    {
+      "question": "How many singers do we have?",
+      "gold_sql": "SELECT count(*) FROM singer",
+      "predicted_sql": "SELECT COUNT(*) FROM singer;",
+      "exact_match": false
+    },
+    {
+      "question": "What is the total number of singers?",
+      "gold_sql": "SELECT count(*) FROM singer",
+      "predicted_sql": "SELECT COUNT(*) FROM singer;",
+      "exact_match": false
+    },
+    {
+      "question": "Show name, country, age for all singers ordered by age from the oldest to the youngest.",
+      "gold_sql": "SELECT name ,  country ,  age FROM singer ORDER BY age DESC",
+      "predicted_sql": "SELECT Singer.Name, Singer.Country, Singer.Age FROM Singer",
+      "exact_match": false
+    },
+    {
+      "question": "What are the names, countries, and ages for every singer in descending order of age?",
+      "gold_sql": "SELECT name ,  country ,  age FROM singer ORDER BY age DESC",
+      "predicted_sql": "SELECT Singer_Name, Singer_Country, Singer_Age FROM singer ORDER BY Singer_Age DESC;",
+      "exact_match": false
+    },
+    {
+      "question": "What is the average, minimum, and maximum age of all singers from France?",
+      "gold_sql": "SELECT avg(age) ,  min(age) ,  max(age) FROM singer WHERE country  =  'France'",
+      "predicted_sql": "SELECT AVG(Age), MIN(Age), MAX(Age) FROM singer WHERE Country = 'France';",
+      "exact_match": false
+    },
+    {
+      "question": "What is the average, minimum, and maximum age for all French singers?",
+      "gold_sql": "SELECT avg(age) ,  min(age) ,  max(age) FROM singer WHERE country  =  'France'",
+      "predicted_sql": "SELECT AVG(Age), MIN(Age), MAX(Age) FROM singer WHERE Country = 'France';",
+      "exact_match": false
+    },
+    {
+      "question": "Show the name and the release year of the song by the youngest singer.",
+      "gold_sql": "SELECT song_name ,  song_release_year FROM singer ORDER BY age LIMIT 1",
+      "predicted_sql": "SELECT Singer_Name, Song_release_year FROM singer WHERE Age = (SELECT MIN(Age) FROM singer)",
+      "exact_match": false
+    },
+    {
+      "question": "What are the names and release years for all the songs of the youngest singer?",
+      "gold_sql": "SELECT song_name ,  song_release_year FROM singer ORDER BY age LIMIT 1",
+      "predicted_sql": "SELECT Singer_Name, Song_release_year FROM singer WHERE Age = (SELECT MIN(Age) FROM singer)",
+      "exact_match": false
+    },
+    {
+      "question": "What are all distinct countries where singers above age 20 are from?",
+      "gold_sql": "SELECT DISTINCT country FROM singer WHERE age  >  20",
+      "predicted_sql": "SELECT DISTINCT Country FROM singer WHERE Age > 20;",
+      "exact_match": false
+    },
+    {
+      "question": "What are  the different countries with singers above age 20?",
+      "gold_sql": "SELECT DISTINCT country FROM singer WHERE age  >  20",
+      "predicted_sql": "SELECT DISTINCT Country FROM singer WHERE Age > 20;",
+      "exact_match": false
+    },
+    {
+      "question": "Show all countries and the number of singers in each country.",
+      "gold_sql": "SELECT country ,  count(*) FROM singer GROUP BY country",
+      "predicted_sql": "SELECT Country, COUNT(Singer_ID) FROM singer GROUP BY Country;",
+      "exact_match": false
+    },
+    {
+      "question": "How many singers are from each country?",
+      "gold_sql": "SELECT country ,  count(*) FROM singer GROUP BY country",
+      "predicted_sql": "SELECT Singer.Country, COUNT(*) AS Count",
+      "exact_match": false
+    },
+    {
+      "question": "List all song names by singers above the average age.",
+      "gold_sql": "SELECT song_name FROM singer WHERE age  >  (SELECT avg(age) FROM singer)",
+      "predicted_sql": "SELECT Song_Name FROM singer WHERE Age > (SELECT AVG(Age) FROM singer)",
+      "exact_match": false
+    },
+    {
+      "question": "What are all the song names by singers who are older than average?",
+      "gold_sql": "SELECT song_name FROM singer WHERE age  >  (SELECT avg(age) FROM singer)",
+      "predicted_sql": "SELECT Song_Name FROM singer WHERE Age > (SELECT AVG(Age) FROM singer)",
+      "exact_match": false
+    },
+    {
+      "question": "Show location and name for all stadiums with a capacity between 5000 and 10000.",
+      "gold_sql": "SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000",
+      "predicted_sql": "SELECT Stadium.Location, Stadium.Name FROM Stadium WHERE Stadium.Capacity BETWEEN 5000 AND 10000;",
+      "exact_match": false
+    },
+    {
+      "question": "What are the locations and names of all stations with capacity between 5000 and 10000?",
+      "gold_sql": "SELECT LOCATION ,  name FROM stadium WHERE capacity BETWEEN 5000 AND 10000",
+      "predicted_sql": "SELECT Stadium.Location, Stadium.Name FROM Stadium WHERE Stadium.Capacity BETWEEN 5000 AND 10000;",
+      "exact_match": false
+    },
+    {
+      "question": "What is the maximum capacity and the average of all stadiums ?",
+      "gold_sql": "select max(capacity), average from stadium",
+      "predicted_sql": "SELECT MAX(Capacity) AS max_capacity, AVG(Average) AS avg_capacity FROM stadium;",
+      "exact_match": false
+    },
+    {
+      "question": "What is the average and maximum capacities for all stadiums ?",
+      "gold_sql": "select avg(capacity) ,  max(capacity) from stadium",
+      "predicted_sql": "SELECT stadium.Capacity, MAX(stadium.Capacity) FROM stadium GROUP BY stadium.Capacity",
+      "exact_match": false
+    },
+    {
+      "question": "What is the name and capacity for the stadium with highest average attendance?",
+      "gold_sql": "SELECT name ,  capacity FROM stadium ORDER BY average DESC LIMIT 1",
+      "predicted_sql": "SELECT stadium.Name, stadium.Capacity FROM stadium WHERE stadium.Average = (SELECT MAX(stadium.Average) FROM stadium)",
+      "exact_match": false
+    },
+    {
+      "question": "What is the name and capacity for the stadium with the highest average attendance?",
+      "gold_sql": "SELECT name ,  capacity FROM stadium ORDER BY average DESC LIMIT 1",
+      "predicted_sql": "SELECT stadium.Name, stadium.Capacity FROM stadium WHERE stadium.Average = (SELECT MAX(stadium.Average) FROM stadium)",
+      "exact_match": false
+    }
+  ]
+}
