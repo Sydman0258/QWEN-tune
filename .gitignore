@@ -1,0 +1,33 @@
+# Generated data (regenerate with prepare_data.py)
+train_formatted.jsonl
+val_formatted.jsonl
+
+# Model checkpoints / LoRA adapters
+qwen-nl2sql-lora/
+smoke_test_output/
+*.safetensors
+*.bin
+
+# Unused / leftover files
+tables.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# Environment / secrets
+.env
+
+# OS/editor cruft
+.DS_Store
+.vscode/
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Weights & Biases logs (if used)
+wandb/
