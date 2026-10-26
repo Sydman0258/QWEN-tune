@@ -17,8 +17,8 @@ text-to-SQL benchmark.
 
 | Model | Exact-Match Accuracy | Execution Accuracy |
 |---|---|---|
-| Base Qwen2.5-1.5B (zero-shot prompting) | 0% | _TODO: fill in_ |
-| Qwen2.5-1.5B + QLoRA fine-tuned | _TODO: fill in_ | _TODO: fill in_ |
+| Base Qwen2.5-1.5B (zero-shot prompting) | 0% |  |
+| Qwen2.5-1.5B + QLoRA fine-tuned ||  |
 
 > The base model's SQL logic was often already correct, but it didn't follow Spider's exact
 > formatting conventions (casing, semicolons, column qualifiers), which is what fine-tuning
